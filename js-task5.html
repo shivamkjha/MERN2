@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+         .error {
+            border: 2px solid red;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+
+        #contact-form {
+            width: 80%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        #contact-form div {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #contact-form label {
+            float: left;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="contact-form" action="#" method="post">
+            <h1>Fill the form nigga</h1>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <div id="name-error"style="color: red;"></div>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <div id="email-error"style="color: red;"></div>
+            </div>
+            <div>
+                <label for="website">Website:</label>
+                <input type="text" id="website" name="website">
+                <div id="website-error" style="color: red;"></div>
+            </div>
+            <div>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message"></textarea>
+                <div id="message-error" style="color: red"></div>
+            </div>
+            <div>
+                <button type="submit" id="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('contact-form');
+
+        form.addEventListener('submit', function (e) {
+            let isValid = true;
+
+            if (document.getElementById('name').value.trim() === '') {
+                isValid = false;
+                document.getElementById('name').classList.add('error');
+                document.getElementById('name-error').textContent = 'This field is required.';
+            } else {
+                document.getElementById('name').classList.remove('error');
+                document.getElementById('name-error').textContent = '';
+            }
+
+            if (document.getElementById('email').value.trim() === '') {
+                isValid = false;
+                document.getElementById('email').classList.add('error');
+                document.getElementById('email-error').textContent = 'A Valid email is required.';
+            } else {
+                document.getElementById('email').classList.remove('error');
+                document.getElementById('email-error').textContent = '';
+            }
+
+            if (document.getElementById('website').value.trim() === '') {
+                isValid = false;
+                document.getElementById('website').classList.add('error');
+                document.getElementById('website-error').textContent = 'A Valid URL is required.';
+            } else {
+                document.getElementById('website').classList.remove('error');
+                document.getElementById('website-error').textContent = '';
+            }
+
+            if (document.getElementById('message').value.trim() === '') {
+                isValid = false;
+                document.getElementById('message').classList.add('error');
+                document.getElementById('message-error').textContent = 'This field is required.';
+            } else {
+                document.getElementById('message').classList.remove('error');
+                document.getElementById('message-error').textContent = '';
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
